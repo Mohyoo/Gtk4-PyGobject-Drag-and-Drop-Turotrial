@@ -31,7 +31,7 @@ class DragSource(Gtk.Label):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        # Drag controller.
+        # Drag controller (for now, you don't need to change this).
         drag_controller = Gtk.DragSource()
         drag_controller.connect('prepare', self.on_drag_prepare)
         drag_controller.connect('drag-begin', self.on_drag_begin)
@@ -61,7 +61,7 @@ class DropTarget(Gtk.Label):
         # Label properties.
         self.set_size_request(250, 290)
 
-        # Drop controller.
+        # Drop controller (just change 'set_gtypes' for now).
         drop_controller = Gtk.DropTarget.new(type=GObject.TYPE_NONE, actions=Gdk.DragAction.COPY)
         drop_controller.set_gtypes([DragSource])    # Enter a list of the draggable classes.
         drop_controller.connect('drop', self.on_drop)
